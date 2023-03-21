@@ -7,6 +7,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const [profileImageInput, setProfileImageInput] = useState(null);
   const navigate = useNavigate();
 
   const signUpEvent = (e) => {
@@ -22,6 +23,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
         password: passwordInput,
         name: nameInput,
         email: emailInput,
+        image: profileImageInput
       })
       .then((response) => {
         const user = { username: usernameInput };
@@ -54,17 +56,19 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
             <div className="inputbox">
               <ion-icon name="person-outline"></ion-icon>
-              <input id="username"
+              <input
+                id="username"
                 type="username"
                 className="form-control"
                 onChange={(event) => setUsernameInput(event.target.value)}
               />
               <label>Username</label>
-            </div>  
+            </div>
 
             <div className="inputbox">
               <ion-icon name="id-card-outline"></ion-icon>
-              <input id="name"
+              <input
+                id="name"
                 type="text"
                 className="form-control"
                 onChange={(event) => setNameInput(event.target.value)}
@@ -74,27 +78,34 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
             <div className="inputbox">
               <ion-icon name="mail-outline"></ion-icon>
-              <input id="email"
+              <input
+                id="email"
                 type="email"
                 className="form-control"
                 onChange={(event) => setEmailInput(event.target.value)}
               />
               <label>Email</label>
             </div>
-              
+
             <div className="inputbox">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input id="password"
+              <input
+                id="password"
                 type="password"
                 className="form-control"
                 onChange={(event) => setPasswordInput(event.target.value)}
               />
               <label>Password</label>
             </div>
-            <button id="button"
-              type="submit" 
-              className="btn btn-primary mb-2"
-            >
+
+            <div>
+              <input
+                type="file"
+                onChange={(event) => setProfileImageInput(event.target.value)}
+              ></input>
+            </div>
+
+            <button id="button" type="submit" className="btn btn-primary mb-2">
               Sign Up
             </button>
           </form>

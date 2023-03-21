@@ -40,7 +40,7 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/newUser", (req, res) => {
-  const { username, password, name, email } = req.body;
+  const { username, password, name, email, image } = req.body;
   const sql = `INSERT INTO users (username, password, name, email, profileImage) VALUES (?, ?, ?, ?, ?)`;
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) {
@@ -59,7 +59,7 @@ app.post("/newUser", (req, res) => {
               .status(400)
               .send("The username was already inserted in the database");
           } else {
-            db.run(sql, [username, hash, name, email, null], (err) => {
+            db.run(sql, [username, hash, name, email, image], (err) => {
               if (err) {
                 if (err.message.includes("UNIQUE constraint failed")) {
                   res.status(400).send("Username already exists");
@@ -122,12 +122,11 @@ app.post("/userByToken", (req, res) => {
   }
 });
 
-app.post("/setUserProfile", upload.single("image"), (req, res) => {
-  const imageBinaryData = req.file.buffer;
-  const { user } = req.body;
+app.post("/setUserProfile", (req, res) => {
+  const { image, user } = req.body;
   db.run(
     "UPDATE users SET profileImage = ? WHERE id = ?",
-    [imageBinaryData, user],
+    [image, user],
     (err) => {
       if (err) {
         console.log(err.message);

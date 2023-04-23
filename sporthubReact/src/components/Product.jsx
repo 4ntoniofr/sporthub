@@ -34,21 +34,21 @@ export default function Product(props) {
     }
   };
 
-  const checkLogged = (n) =>{
-    if(userLogged){
+  const checkLogged = () => {
+    if (userLogged) {
       MySwal.fire({
         title: "Confirmation needed",
-        text: "Please confirm to add the product to the " + (n == 0 ? "cart" : "wishlist"),
+        text: "Please confirm to add the product to the cart",
         icon: "info",
         showCancelButton: true,
         confirmButtonText: "Confirm",
         confirmButtonColor: "#ffa500",
         denyButtonText: "Deny",
-      }).then((res) => handleClick(res, n == 0 ? props.addToCart : props.addToWishlist));
-    }else{
+      }).then((res) => handleClick(res, props.addToCart));
+    } else {
       MySwal.fire({
         title: "You Need to LogIn",
-        text: "In order to add the product to the " + (n == 0 ? "cart" : "wishlist") + " you should LogIn with your account.",
+        text: "In order to add the product to the cart you should LogIn with your account.",
         icon: "warning",
         confirmButtonColor: "#ffa500",
       });
@@ -56,14 +56,23 @@ export default function Product(props) {
   };
 
   const notifyWishList = () => {
-    MySwal.fire({
-      title: "Success",
-      text: "The product has been added to the wish list",
-      icon: "success",
-      confirmButtonColor: "#ffa500",
-    }).then(() => {
-      props.addToWishlist(product);
-    });
+    if (userLogged) {
+      MySwal.fire({
+        title: "Success",
+        text: "The product has been added to the wish list",
+        icon: "success",
+        confirmButtonColor: "#ffa500",
+      }).then(() => {
+        props.addToWishlist(product);
+      });
+    } else {
+      MySwal.fire({
+        title: "You Need to LogIn",
+        text: "In order to add the product to the wishlist you should LogIn with your account.",
+        icon: "warning",
+        confirmButtonColor: "#ffa500",
+      });
+    }
   };
 
   return product !== undefined ? (
@@ -78,16 +87,19 @@ export default function Product(props) {
       <div>
         <h2>{product.name}</h2>
         <p>{product.description}</p>
-				<div className="container" id="buttons">
-	        <p>Price: {product.price}€</p>
-        <button id="cart"
-          className="btn btn-primary"
-          onClick={() => checkLogged(0)}
-        >
-          Add to cart
-        </button>
-					<button id="wishlist" className="btn btn-primary" onClick={() => checkLogged(1)}>Add to wishlist</button>
-				</div>
+        <div className="container" id="buttons">
+          <p>Price: {product.price}€</p>
+          <button id="cart" className="btn btn-primary" onClick={checkLogged}>
+            Add to cart
+          </button>
+          <button
+            id="wishlist"
+            className="btn btn-primary"
+            onClick={notifyWishList}
+          >
+            Add to wishlist
+          </button>
+        </div>
       </div>
     </div>
   ) : null;

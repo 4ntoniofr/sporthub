@@ -47,6 +47,9 @@ app.get("/userInfo/:username", (req, res) => {
     if (err) {
       res.send(err.message);
     }
+    if (row === undefined) {
+      res.sendStatus(400);
+    }
     res.send(row);
   });
 });
@@ -71,18 +74,25 @@ app.post("/newUser", (req, res) => {
               .status(400)
               .send("The username was already inserted in the database");
           } else {
-            db.run(sql, [username, hash, name, email, lastName, date, null], (err) => {
-              if (err) {
-                if (err.message.includes("UNIQUE constraint failed")) {
-                  res.status(400).send("Username already exists");
+            db.run(
+              sql,
+              [username, hash, name, email, lastName, date, null],
+              (err) => {
+                if (err) {
+                  if (err.message.includes("UNIQUE constraint failed")) {
+                    res.status(400).send("Username already exists");
+                  }
+                  console.error(err.message);
+                  res.status(500).send("Internal server error");
+                } else {
+                  token = jwt.sign(
+                    { username: username },
+                    process.env.TOKEN_KEY
+                  );
+                  res.status(200).send(token);
                 }
-                console.error(err.message);
-                res.status(500).send("Internal server error");
-              } else {
-                token = jwt.sign({ username: username }, process.env.TOKEN_KEY);
-                res.status(200).send(token);
               }
-            });
+            );
           }
         }
       );
@@ -120,7 +130,6 @@ app.post("/login", (req, res) => {
   });
 });
 
-
 app.post("/userByToken", (req, res) => {
   try {
     const { token } = req.body;
@@ -154,52 +163,80 @@ app.post("/setUserProfile", upload.single("image"), (req, res) => {
 });
 
 app.post("/updateUser", (req, res) => {
-  const { username, password, name, email, date, lastname, phone, address1, address2, country, postalcode, gender} = req.body;
+  const {
+    username,
+    password,
+    name,
+    email,
+    date,
+    lastname,
+    phone,
+    address1,
+    address2,
+    country,
+    postalcode,
+    gender,
+  } = req.body;
   const sql = `UPDATE users SET username = ?, name = ?, email = ?, date = ?, lastname = ?, phone = ?, address1 = ?, address2 = ?, country = ?, postalcode = ?, gender = ? WHERE username = ?`;
-    db.get(
-      "SELECT * FROM users WHERE username = ?",
-      [username],
-      (err, rows) => {
-        if (err) {
-          console.error(err.message);
-          res.status(500).send("Internal server error");
-        } else {
-          let user = rows;
-          if (user) {
-            bcrypt.compare(password, user.password, function (err, result) {
-              if (err) {
-                console.error(err.message);
-                res.status(500).send("Internal server error");
-              } else {
-                if (result) {
-                  db.run(sql, [username, name, email, date, lastname, phone, address1, address2, country, postalcode, gender,username], (err) => {
-                    if (err) {
-                      if (err.message.includes("UNIQUE constraint failed")) {
-                        console.log("porla");
-                        res.status(400).send("Username already exists");
-                      }
-                      console.error(err.message);
-                      res.status(500).send("Internal server error");
-                    } else {
-                      token = jwt.sign({ username: username }, process.env.TOKEN_KEY);
-                      res.status(200).send(token);
-                    }
-                  });
-                } else {
-                  console.log("password not valid");
-                  res.status(403).send("Password not valid");
-                }
-              }
-            });
+  db.get("SELECT * FROM users WHERE username = ?", [username], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send("Internal server error");
+    } else {
+      let user = rows;
+      if (user) {
+        bcrypt.compare(password, user.password, function (err, result) {
+          if (err) {
+            console.error(err.message);
+            res.status(500).send("Internal server error");
           } else {
-            console.log("username not valid");
-            res.status(403).send("Username not valid");
+            if (result) {
+              db.run(
+                sql,
+                [
+                  username,
+                  name,
+                  email,
+                  date,
+                  lastname,
+                  phone,
+                  address1,
+                  address2,
+                  country,
+                  postalcode,
+                  gender,
+                  username,
+                ],
+                (err) => {
+                  if (err) {
+                    if (err.message.includes("UNIQUE constraint failed")) {
+                      console.log("porla");
+                      res.status(400).send("Username already exists");
+                    }
+                    console.error(err.message);
+                    res.status(500).send("Internal server error");
+                  } else {
+                    token = jwt.sign(
+                      { username: username },
+                      process.env.TOKEN_KEY
+                    );
+                    res.status(200).send(token);
+                  }
+                }
+              );
+            } else {
+              console.log("password not valid");
+              res.status(403).send("Password not valid");
+            }
           }
-        }
+        });
+      } else {
+        console.log("username not valid");
+        res.status(403).send("Username not valid");
       }
-    );
+    }
+  });
 });
-
 
 /**
  * API PRODUCTOS
@@ -238,10 +275,11 @@ app.post("/newProduct", (req, res) => {
  */
 
 app.post("/addToWishlist", (req, res) => {
-	const { username, productId } = req.body;
-  const sql = "INSERT INTO wishlist(user, product) VALUES ((SELECT id FROM users WHERE username = ?),?)";
-	
-	db.run(sql, [username,productId], (err) => {
+  const { username, productId } = req.body;
+  const sql =
+    "INSERT INTO wishlist(user, product) VALUES ((SELECT id FROM users WHERE username = ?),?)";
+
+  db.run(sql, [username, productId], (err) => {
     if (err) {
       console.error(err.message);
       res.status(500).send("Internal server error");
@@ -252,10 +290,11 @@ app.post("/addToWishlist", (req, res) => {
 });
 
 app.post("/removeFromWishlist", (req, res) => {
-	const { username, productId } = req.body;
-  const sql = "DELETE FROM wishlist WHERE user = (SELECT id FROM users WHERE username = ?) and product = ?";
-	
-	db.run(sql, [username,productId], (err) => {
+  const { username, productId } = req.body;
+  const sql =
+    "DELETE FROM wishlist WHERE user = (SELECT id FROM users WHERE username = ?) and product = ?";
+
+  db.run(sql, [username, productId], (err) => {
     if (err) {
       console.error(err.message);
       res.status(500).send("Internal server error");
@@ -266,17 +305,18 @@ app.post("/removeFromWishlist", (req, res) => {
 });
 
 app.post("/getWishlist", (req, res) => {
-	const { username } = req.body;
-	const sql = "SELECT product FROM wishlist WHERE user = (SELECT id FROM users WHERE username = ?)";
+  const { username } = req.body;
+  const sql =
+    "SELECT product FROM wishlist WHERE user = (SELECT id FROM users WHERE username = ?)";
 
-	db.all(sql, [username], (err, rows) => {
-		if(err){
-			console.log(err.message);
-			res.status(500).send("Internal Server ERROR");
-		}else{
-			res.status(200).send(rows);
-		}
-	});
+  db.all(sql, [username], (err, rows) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).send("Internal Server ERROR");
+    } else {
+      res.status(200).send(rows);
+    }
+  });
 });
 
 app.listen(port, () => {

@@ -63,13 +63,13 @@ export default function Wishlist({ userLogged, wishlist, setWishlist }) {
 											/>
 										</div>
 										<div className="col-3">
-											<h5 class="card-title">{product.name}</h5>
+											<h5 tabIndex={0} class="card-title">{product.name}</h5>
 										</div>
 										<div className="col-3">
-											<h5>Price: {product.price}€</h5>
+											<h5 tabIndex={0} aria-label={`Price ${product.price} euros`}>Price: {product.price}€</h5>
 										</div>
 										<div className="col-3">
-											<button
+											<button aria-label="delete product"
 												onClick={() => {
                           MySwal.fire({
                             title: "Confirmation needed",

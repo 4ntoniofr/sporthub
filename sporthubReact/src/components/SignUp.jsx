@@ -89,12 +89,14 @@ export default function SignUp({ userLogged, setUserLogged }) {
       <div className="form-box formBox" id="signup">
         <div className="form-value">
           <form onSubmit={signUpEvent}>
-            <h2>Sign Up</h2>
-            <p> Register here to be part of SportHub !</p>
+            <h2 tabIndex={0}>Sign Up</h2>
+            <p tabIndex={0} aria-label="Register here to be part of SportHub !"> Register here to be part of SportHub !</p>
 
             <div className="inputbox formInputbox" aria-label="Username">
             	<ion-icon name="person-outline"></ion-icon>
-              <input id="username"
+              <input 
+                aria-label="Username"
+                id="username"
                 type="username"
                 className={usernameInput!=="" ? "activo form-control" : "form-control"}
                 onChange={(event) => setUsernameInput(event.target.value)}
@@ -104,7 +106,9 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
             <div className="inputbox formInputbox" aria-label="Name">
               <ion-icon name="id-card-outline"></ion-icon>
-              <input id="name"
+              <input 
+                aria-label="Name"
+                id="name"
                 type="text"
                 className={nameInput!=="" ? "activo form-control" : "form-control"}
                 onChange={(event) => setNameInput(event.target.value)}
@@ -114,7 +118,9 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
             <div className="inputbox formInputbox" aria-label="Last Name">
               <ion-icon name="people-circle-outline"></ion-icon>
-              <input id="lname"
+              <input 
+                aria-label="Last Name"
+                id="lname"
                 type="text"
                 className={lastNameInput!=="" ? "activo form-control" : "form-control"}
                 onChange={(event) => setLastNameInput(event.target.value)}
@@ -124,14 +130,16 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
             <div className="inputbox formInputbox" aria-label="Birth Date, format dd/mm/yyyy">
             <ion-icon name="calendar-outline"></ion-icon>
-            <input type="text" maxLength={10} id="fecha" className={dateInput!=="" ? "activo form-control" : "form-control"}
+            <input aria-label="Birth date dd/mm/yyyy" type="text" maxLength={10} id="fecha" className={dateInput!=="" ? "activo form-control" : "form-control"}
             value={dateInput} onChange={handleDateInputChange} onClick={handleDateInputClick}/>
             <label>Birth Date dd/mm/yyyy </label>
             </div>
 
             <div className="inputbox formInputbox" aria-label="Email">
               <ion-icon name="mail-outline"></ion-icon>
-              <input id="email"
+              <input 
+                aria-label="Email"
+                id="email"
                 type="email"
                 className={emailInput!=="" ? "activo form-control" : "form-control"}
                 onChange={(event) => setEmailInput(event.target.value)}
@@ -141,7 +149,9 @@ export default function SignUp({ userLogged, setUserLogged }) {
               
             <div className="inputbox formInputbox" aria-label="Password">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input id="password"
+              <input 
+                aria-label="Password"
+                id="password"
                 type="password"
                 className={passwordInput!=="" ? "activo form-control" : "form-control"}
                 onChange={(event) => setPasswordInput(event.target.value)}

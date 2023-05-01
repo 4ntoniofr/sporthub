@@ -4,7 +4,7 @@ export default function AboutUs() {
   return (
     <div>
       <section className="sporthub-section">
-        <h2 className="about-us-header">What is SportHub?</h2>
+        <h2 tabIndex={0} className="about-us-header">What is SportHub?</h2>
 
         <img
           className="about-img"
@@ -13,7 +13,12 @@ export default function AboutUs() {
           aria-label="Sporthub logo"
         />
 
-        <p>
+        <p tabIndex={0} 
+        aria-label=" At SportHub, we believe that everyone should have access to quality
+        sports products at affordable prices. That's why we are
+        committed to providing a user-friendly platform that makes it
+        easy for our customers to find the products they need and make their
+        purchases with ease.">
           At SportHub, we believe that everyone should have access to quality
           sports products at <b>affordable prices</b>. That's why we are
           committed to providing a <b> user-friendly platform </b> that makes it
@@ -21,7 +26,10 @@ export default function AboutUs() {
           purchases with ease.
         </p>
 
-        <p>
+        <p tabIndex={0} 
+          aria-label="We are passionate about sports, and we want to share that passion with
+          our customers by providing them with a platform that offers the 
+          best sports products in the market.">
           We are passionate about sports, and we want to share that passion with
           our customers by providing them with a platform that offers the{" "}
           <b>best sports products</b> in the market.
@@ -29,15 +37,25 @@ export default function AboutUs() {
       </section>
 
       <section className="sporthub-section">
-        <h2 className="about-us-header">Mission</h2>
+        <h2 className="about-us-header" tabIndex={0}>Mission</h2>
 
-        <p>
+        <p tabIndex={0}
+        aria-label="At SportHub, our mission is to provide a seamless and
+        enjoyable shopping experience for our users. Our goal is to
+        create a platform that is accessible to everyone, regardless of
+        their technical background.">
           At SportHub, our mission is to provide a seamless and{" "}
           <b>enjoyable shopping experience</b> for our users. Our goal is to
           create a platform that is <b>accessible to everyone</b>, regardless of
           their technical background.
         </p>
-        <p>
+        <p tabIndex={0} aria-label="In order to achieve this, we have focused on creating a
+          clean and intuitive user interface. We believe that design
+          plays a crucial role in user experience, and we have worked hard to
+          ensure that SportHub looks and feels great. We have also made sure
+          that our platform is optimized for speed and efficiency, so that our
+          users can shop without any delays or interruptions.">
+
           In order to achieve this, we have focused on creating a{" "}
           <b>clean and intuitive user interface</b>. We believe that design
           plays a crucial role in user experience, and we have worked hard to
@@ -49,8 +67,13 @@ export default function AboutUs() {
 
       <div className="row align-items-start project-div">
         <section className="col project-section">
-          <h2 className="about-us-header">Team</h2>
-          <p>
+          <h2 tabIndex={0} className="about-us-header">Team</h2>
+          <p tabIndex={0} aria-label=" We are a group of five Software Engineering students who are
+            currently in our third year of studies. We are taking the User
+            Interfaces subject, and as part of the course requirements, we have
+            decided to create an e-commerce platform called SportHub. Our goal
+            is to create an accessible and functional online store for sports
+            enthusiasts that offers a wide range of high-quality products.">
             We are a group of five Software Engineering students who are
             currently in our third year of studies. We are taking the User
             Interfaces subject, and as part of the course requirements, we have
@@ -58,7 +81,11 @@ export default function AboutUs() {
             is to create an accessible and functional online store for sports
             enthusiasts that offers a wide range of high-quality products.
           </p>
-          <p>
+          <p tabIndex={0} aria-label="Our team consists of five highly motivated individuals who are all
+            committed to making SportHub a success. Our team members are Jorge,
+            Valentín, Antonio, Pepe, and Pablo. We all come from different
+            backgrounds and have different skill sets, which allows us to work
+            together effectively and bring a unique perspective to the table.">
             Our team consists of five highly motivated individuals who are all
             committed to making SportHub a success. Our team members are Jorge,
             Valentín, Antonio, Pepe, and Pablo. We all come from different
@@ -68,8 +95,13 @@ export default function AboutUs() {
         </section>
 
         <section className="col project-section">
-          <h2 className="about-us-header">Technologies</h2>
-          <p>
+          <h2 tabIndex={0} className="about-us-header">Technologies</h2>
+          <p tabIndex={0} aria-label="We decided to use React and SQLite3 as our core technologies for
+            this project. React, is utilized for constructing user interfaces.
+            SQLite3, on the other hand, is a lightweight database management
+            system that is best suited for modest-scale endeavors. This has
+            resulted in the development of a platform that is both responsive
+            and efficient.">
             We decided to use React and SQLite3 as our core technologies for
             this project. React, is utilized for constructing user interfaces.
             SQLite3, on the other hand, is a lightweight database management
@@ -77,7 +109,11 @@ export default function AboutUs() {
             resulted in the development of a platform that is both responsive
             and efficient.
           </p>
-          <p>
+          <p tabIndex={0} aria-label="Together, we are committed to making SportHub the best possible
+            platform for our users. We are excited to continue developing and
+            improving our platform, and we hope that you will join us on this
+            journey. If you are interested in examining our code or contributing
+            to our project, we encourage you to visit our GitHub repository.">
             Together, we are committed to making SportHub the best possible
             platform for our users. We are excited to continue developing and
             improving our platform, and we hope that you will join us on this

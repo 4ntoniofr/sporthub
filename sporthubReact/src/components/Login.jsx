@@ -43,12 +43,14 @@ export default function Login({ userLogged, setUserLogged }) {
       <div className="form-box formBox" id="login">
         <div className="form-value">
           <form onSubmit={loginEvent}>
-            <h2>Log in</h2>
-            <p> Introduce your credentials to log in</p>
+            <h2 tabIndex={0}>Log in</h2>
+            <p tabIndex={0} aria-label="Introduce your credentials to log in"> Introduce your credentials to log in</p>
 
             <div className="inputbox formInputbox" aria-label="Username">
               <ion-icon name="person-outline"></ion-icon>
-              <input id="username"
+              <input
+                aria-label="Username" 
+                id="username"
                 type="username"
                 value={usernameInput}
                 className={usernameInput!=="" ? "activo form-control" : "form-control"}
@@ -59,7 +61,9 @@ export default function Login({ userLogged, setUserLogged }) {
 
             <div className="inputbox formInputbox" aria-label="Password">
               <ion-icon name="lock-closed-outline"></ion-icon>
-              <input id="password"
+              <input 
+                aria-label="Password"
+                id="password"
                 type="password"
                 value={passwordInput}
                 className={passwordInput!=="" ? "activo form-control" : "form-control"}

@@ -19,7 +19,7 @@ export default function ProductList({ cart, shipment }) {
 					<div className="row align-items-center mb-2" tabIndex={0} 
 					aria-label={`${product.quantity} products of ${product.prod.name} ${product.quantity * product.prod.price} euros`}>
 						<div className="col">
-							<img src={product.prod.photo} style={{ width: "60%" }}></img>
+							<img src={product.prod.photo} style={{ width: "60%" }} alt="Image not found"></img>
 						</div>
 						<div className="col">
 							x{product.quantity}

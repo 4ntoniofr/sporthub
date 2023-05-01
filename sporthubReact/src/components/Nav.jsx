@@ -17,13 +17,13 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
     return (
       <>
         <li className="nav-item">
-          <Link className="nav-link" to={"/login"}>
+          <Link tabIndex={-1} className="nav-link" to={"/login"}>
             <button className="button2">Login</button>
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link className="nav-link" to={"/signup"}>
+          <Link tabIndex={-1} className="nav-link" to={"/signup"}>
             <button className="button2">Sign Up</button>
           </Link>
         </li>

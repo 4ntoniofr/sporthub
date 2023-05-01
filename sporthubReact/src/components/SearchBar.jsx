@@ -21,7 +21,7 @@ export default function SearchBar({ lastQuery, lastCategory }) {
 		<div className="p-3 mb-3 rounded bg-white">
 			<h5 className="mb-3">Search what you want</h5>
 			<div className="input-group mb-3">
-				<input type="text" className="form-control w-50 searchBar" id="searchBar" defaultValue={lastQuery} onKeyUp={(e) => onEnter(e)} />
+				<input aria-label="Search what you want" type="text" className="form-control w-50 searchBar" id="searchBar" defaultValue={lastQuery} onKeyUp={(e) => onEnter(e)} />
 				<select className="form-select searchBar" id="categories" defaultValue={lastCategory}>
 					<option value="all">All Categories</option>
 					<option value="football">Football</option>
@@ -32,7 +32,7 @@ export default function SearchBar({ lastQuery, lastCategory }) {
 					<option value="tennis">Tennis</option>
 					<option value="cycling">Cycling</option>
 				</select>
-				<button id="searchButton" className="btn btn-primary" onClick={() => doSearch()}>
+				<button aria-label="Search" id="searchButton" className="btn btn-primary" onClick={() => doSearch()}>
 					<ion-icon name="search-outline" className="searchIcon"></ion-icon>
 					Search
 				</button>

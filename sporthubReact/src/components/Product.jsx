@@ -76,10 +76,11 @@ export default function Product(props) {
         />
       </div>
       <div>
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
+        <h2 tabIndex={0}>{product.name}</h2>
+        <p tabIndex={0} aria-label={product.description}>{product.description}</p>
 				<div className="container" id="buttons">
-	        <p>Price: {product.price}€</p>
+	        <p tabIndex={0} aria-label={`Price ${product.price} euros`}>Price: {product.price}€</p>
+
         <button id="cart"
           className="btn btn-primary"
           onClick={() => checkLogged(0)}

@@ -49,10 +49,11 @@ export default function Search({ productList }) {
         <div className="row">
           {list.slice(i, i + ROW_SIZE).map((p) => {
             return (
-              <div
+              <div tabIndex={0}
                 onClick={() => openProduct(p)}
                 className="col-12 col-sm-6 col-md-4 col-lg-3 my-2"
                 key={p.id}
+                aria-label={`${p.name} ${p.price} euros`}
               >
                 <div className="card h-100 text-center productCard">
                   <img

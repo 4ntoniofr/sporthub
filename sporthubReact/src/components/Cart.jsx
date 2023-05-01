@@ -101,10 +101,10 @@ export default function Cart({ userLogged, cart, setCart }) {
                       />
                     </div>
                     <div className="col-3">
-                      <h5 className="card-title">{product.prod.name}</h5>
+                      <h5 className="card-title" tabIndex={0} aria-label={product.prod.name}>{product.prod.name}</h5>
                     </div>
                     <div className="col-1">
-                      <button
+                      <button aria-label="remove product"
                         onClick={() => removeOneFromCart(product.prod.id)}
                         className="removeButton px-1"
                       >
@@ -112,10 +112,10 @@ export default function Cart({ userLogged, cart, setCart }) {
                       </button>
                     </div>
                     <div className="col-2">
-                      <span className="px-1">Quantity: {product.quantity}</span>
+                      <span className="px-1" tabIndex={0} aria-label={`Cantidad ${product.quantity}`}>Quantity: {product.quantity}</span>
                     </div>
                     <div className="col-1">
-                      <button
+                      <button aria-label="Add another product"
                         onClick={() => addOneToCart(product.prod.id)}
                         className="addButton px-1"
                       >
@@ -123,13 +123,13 @@ export default function Cart({ userLogged, cart, setCart }) {
                       </button>
                     </div>
                     <div className="col-2">
-                      <p>Price: {product.prod.price}€</p>
-                      <h5>
+                      <p tabIndex={0} aria-label={`Price ${product.prod.price} euros`}>Price: {product.prod.price}€</p>
+                      <h5 tabIndex={0} aria-label={`Subtotal ${product.prod.price * product.quantity} euros`}>
                         Subtotal: {product.prod.price * product.quantity}€
                       </h5>
                     </div>
                     <div className="col-1">
-                      <button
+                      <button aria-label="Remove all"
                         onClick={() => {
                           MySwal.fire({
                             title: "Confirmation needed",
@@ -160,10 +160,10 @@ export default function Cart({ userLogged, cart, setCart }) {
                 <div className="col-3"></div>
                 <div className="col-3"></div>
                 <div className="col-3">
-                  <h5>Total products: {cartInfo(cart)[0]}</h5>
+                  <h5 tabIndex={0} aria-label={`Total products ${cartInfo(cart)[0]}`}>Total products: {cartInfo(cart)[0]}</h5>
                 </div>
                 <div className="col-3">
-                  <h4>Total: {cartInfo(cart)[1]}€</h4>
+                  <h4 tabIndex={0} aria-label={`Total ${cartInfo(cart)[1]} euros`}>Total: {cartInfo(cart)[1]}€</h4>
                 </div>
               </div>
             </div>

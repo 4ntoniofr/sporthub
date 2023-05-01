@@ -53,7 +53,7 @@ h2{
     pointer-events: none;
     transition: 1s; 
     text-align: left;
-    color: #ffa500;
+    color: #000;
 }
 
 input#username.activo ~ label{
@@ -62,7 +62,7 @@ input#username.activo ~ label{
 
 input#username:focus ~ label{
     left: 200px;
-    color: #ffa500;
+    color: #000;
 }
 
 input#password.activo ~ label{
@@ -71,7 +71,7 @@ input#password.activo ~ label{
 
 input#password:focus ~ label{
     left: 205px;
-    color: #ffa500;
+    color: #000;
 }
 
 input#email.activo ~ label{
@@ -80,7 +80,7 @@ input#email.activo ~ label{
 
 input#email:focus ~ label{
     left: 235px;
-    color: #ffa500;
+    color: #000;
 }
 
 input#name.activo ~ label{
@@ -89,7 +89,7 @@ input#name.activo ~ label{
 
 input#name:focus ~ label{
     left: 230px;
-    color: #ffa500;
+    color: #000;
 }
 
 input#lname.activo ~ label{
@@ -98,7 +98,7 @@ input#lname.activo ~ label{
 
 input#lname:focus ~ label{
     left: 200px;
-    color: #ffa500;
+    color: #000;
 }
 
 input#fecha.activo ~ label{
@@ -107,7 +107,7 @@ input#fecha.activo ~ label{
 
 input#fecha:focus ~ label{
     left: 190px;
-    color: #ffa500;
+    color: #000;
 }
 
 .formInputbox input{

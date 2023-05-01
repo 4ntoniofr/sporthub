@@ -19,26 +19,26 @@ export default function PurchaseSummary({ userLogged, cart, setCart, selectedAdd
 
 	return (
 		<div className="container">
-			<h3>Thank you for your purchase!</h3>
-			<h5>You will receive it on: {shipment.date}</h5>
+			<h3 tabIndex={0}>Thank you for your purchase!</h3>
+			<h5 tabIndex={0}>You will receive it on: {shipment.date}</h5>
 			<div className="row">
 					<div className="col project-section">
-					<h3 className="section-input"> Selected Address</h3>
+					<h3 className="section-input" tabIndex={0}> Selected Address</h3>
 
 						<div className="input-field">
-							<strong>Address Line-1</strong> {selectedAddress.address.address1}
+							<strong tabIndex={0} aria-label={`Address Line-1 ${selectedAddress.address.address1}`}>Address Line-1</strong> {selectedAddress.address.address1}
 						</div>
 
 						<div className="input-field">
-							<strong>Address Line-2</strong> {selectedAddress.address.address2}
+							<strong tabIndex={0}  aria-label={`Address Line-2 ${selectedAddress.address.address2}`}>Address Line-2</strong> {selectedAddress.address.address2}
 						</div>
 
 						<div className="input-field col-sm-5">
-							<strong>Country</strong> {selectedAddress.address.country}
+							<strong tabIndex={0}  aria-label={`Country ${selectedAddress.address.country}`}>Country</strong> {selectedAddress.address.country}
 						</div>
 
 						<div className="input-field col-sm-3">
-							<strong>Postal-Code</strong> {selectedAddress.address.postalcode}
+							<strong tabIndex={0}  aria-label={`Postal-Code ${selectedAddress.address.postalcode}`}>Postal-Code</strong> {selectedAddress.address.postalcode}
 						</div>
 				</div>
 				<ProductList cart={oldCart} shipment={shipment} />

@@ -11,6 +11,8 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
     return total;
   };
 
+  
+
   const loginAndRegister = () => {
     return (
       <>
@@ -30,6 +32,7 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
   };
 
   const helloUserAndLogout = () => {
+    
     return (
       <>
         <li className="nav-item item-cart">
@@ -45,6 +48,7 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
               className="button-profile"
               id="menuBtn"
               data-bs-toggle="dropdown"
+              aria-label={userLogged.username}
             >
               <ion-icon name="person-circle-outline" id="icono"></ion-icon>
               {"   " + userLogged.username + "   "}
@@ -97,6 +101,7 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
               <img
                 width="200"
                 alt="Logo"
+                aria-label="Sporthub"
                 src="https://user-images.githubusercontent.com/100539990/221368717-a32486ad-8628-4658-8354-b97b5eaa3a43.png"
               />
             </a>
@@ -119,19 +124,19 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
               {/* I don`t know how, but we might consider the navbar component being able to know the page which is located and add 'className="nav-link active" aria-current="page"'*/}
 
               <li className="nav-item">
-                <Link className="nav-link" to={"/"}>
+                <Link className="nav-link" to={"/"} aria-label="Home">
                   Home
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to={"/categories"}>
+                <Link className="nav-link" to={"/categories"} aria-label="Categories">
                   Categories
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to={"/about-us"}>
+                <Link className="nav-link" to={"/about-us"} aria-label="About us">
                   About Us
                 </Link>
               </li>

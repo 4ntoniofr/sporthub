@@ -92,7 +92,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
             <h2>Sign Up</h2>
             <p> Register here to be part of SportHub !</p>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Username">
             	<ion-icon name="person-outline"></ion-icon>
               <input id="username"
                 type="username"
@@ -102,7 +102,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
               <label>Username</label>
             </div>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Name">
               <ion-icon name="id-card-outline"></ion-icon>
               <input id="name"
                 type="text"
@@ -112,7 +112,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
               <label>Name</label>
             </div>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Last Name">
               <ion-icon name="people-circle-outline"></ion-icon>
               <input id="lname"
                 type="text"
@@ -122,14 +122,14 @@ export default function SignUp({ userLogged, setUserLogged }) {
               <label>Last Name</label>
             </div>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Birth Date, format dd/mm/yyyy">
             <ion-icon name="calendar-outline"></ion-icon>
             <input type="text" maxLength={10} id="fecha" className={dateInput!=="" ? "activo form-control" : "form-control"}
             value={dateInput} onChange={handleDateInputChange} onClick={handleDateInputClick}/>
-            <label>dd/mm/yyyy Birth Date</label>
+            <label>Birth Date dd/mm/yyyy </label>
             </div>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Email">
               <ion-icon name="mail-outline"></ion-icon>
               <input id="email"
                 type="email"
@@ -139,7 +139,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
               <label>Email</label>
             </div>
               
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Password">
               <ion-icon name="lock-closed-outline"></ion-icon>
               <input id="password"
                 type="password"

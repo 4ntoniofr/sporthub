@@ -46,7 +46,7 @@ export default function Login({ userLogged, setUserLogged }) {
             <h2>Log in</h2>
             <p> Introduce your credentials to log in</p>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Username">
               <ion-icon name="person-outline"></ion-icon>
               <input id="username"
                 type="username"
@@ -57,7 +57,7 @@ export default function Login({ userLogged, setUserLogged }) {
                 <label>Username</label>
             </div>
 
-            <div className="inputbox formInputbox">
+            <div className="inputbox formInputbox" aria-label="Password">
               <ion-icon name="lock-closed-outline"></ion-icon>
               <input id="password"
                 type="password"

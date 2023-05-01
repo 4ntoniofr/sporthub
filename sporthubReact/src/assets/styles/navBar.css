@@ -6,8 +6,20 @@
   font-size: 1em;
 }
 
+:focus{
+  border-color: blue;
+  border-radius: 5px;
+}
 
-
+#navbarText.show{
+  padding: 2rem 3rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 20px;
+  border: 3px solid #fff;
+  box-shadow: 0px 0px 5px #222;
+  backdrop-filter: blur(10px);
+}
 
 .menuUser a:hover {
   background: #ffa500;

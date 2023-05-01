@@ -24,7 +24,9 @@ export default function Categories() {
 					</div>
 					<div className="content categoriesCardContent">
 						<h5>Football</h5>
-						<button onClick={() => navigate("/search?c=football")}>Search Football</button>
+						
+							<button tabindex={0} onClick={() => navigate("/search?c=football")}>Search Football</button>
+					
 					</div>
 				</div>
 			</div>

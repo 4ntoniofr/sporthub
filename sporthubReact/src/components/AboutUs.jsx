@@ -8,7 +8,9 @@ export default function AboutUs() {
 
         <img
           className="about-img"
+          alt="Image not found"
           src="https://user-images.githubusercontent.com/100539990/221368717-a32486ad-8628-4658-8354-b97b5eaa3a43.png"
+          aria-label="Sporthub logo"
         />
 
         <p>
@@ -82,7 +84,7 @@ export default function AboutUs() {
             journey. If you are interested in examining our code or contributing
             to our project, we encourage you to visit our GitHub repository.
           </p>
-          <a id="about-us-ghub" href="https://github.com/4ntoniofr/sporthub">
+          <a id="about-us-ghub" href="https://github.com/4ntoniofr/sporthub" aria-label="Github project">
             <ion-icon size="large" name="logo-github" />
           </a>
         </section>

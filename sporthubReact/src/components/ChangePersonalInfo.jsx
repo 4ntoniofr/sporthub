@@ -86,12 +86,12 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
         <>
             <form onSubmit={submitEvent}>
                 <div className="tittle-subtittle">
-                    <h2>Change your personal info</h2>
-                    <p> Hello , here you can change your personal info</p>
+                    <h2 tabIndex={0}>Change your personal info</h2>
+                    <p tabIndex={0} aria-label="Hello , here you can change your personal info"> Hello , here you can change your personal info</p>
                 </div>
                 <div className="row project-div d-flex align-items-stretch">
                     <div className="col project-section">
-                        <h3 className="section-input"> Personal Information</h3>
+                        <h3 className="section-input" tabIndex={0}> Personal Information</h3>
                         <div className="input-field col-sm-8">
                             <label htmlFor="name-f" >First Name *</label>
                             <div className={errorNombre?"error": "noerror"}>Name is mandatory</div>
@@ -134,7 +134,7 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
                         </div>
                     </div>
                     <div className="col project-section">
-                        <h3 className="section-input"> Location Information</h3>
+                        <h3 className="section-input" tabIndex={0}> Location Information</h3>
                         <div className="input-field">
 
                             <label htmlFor="address-1">Address Line-1</label>
@@ -165,7 +165,7 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
                     <div className="row">
                         <div className="col project-section d-flex justify-content-cente">
                             <div style={{width: "50%",}}>
-                                <h3 className="section-input"> Confirm your changes</h3>
+                                <h3 className="section-input" tabIndex={0}> Confirm your changes</h3>
                                 <p id="extra-info"> We need you to introduce your password to confirm your changes </p>
 
 

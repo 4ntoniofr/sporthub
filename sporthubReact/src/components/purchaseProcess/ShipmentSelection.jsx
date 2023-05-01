@@ -19,16 +19,16 @@ export default function ShipmentSelection({ userLogged, cart, shipment, setShipm
 
 	return (
 		<div className="container">
-			<h3>Shipment Selection</h3>
+			<h3 tabIndex={0}>Shipment Selection</h3>
 
 			<div className="col project-section">
 				<input type="radio" name="selection" 
 					onChange={(e) => setShipment({...shipment, value: e.target.value, date: urgentDate.toLocaleDateString("en-US", formatOptions), price: 5})} 
 					value={0} checked={shipment.value == 0}
 				/>
-				<h5 className="section-input">Urgent Shipment</h5>
-				<span>Arrives on {urgentDate.toLocaleDateString("en-US", formatOptions)}</span><br/>
-				<span>Additional cost of 5$</span>
+				<h5 className="section-input" tabIndex={0}>Urgent Shipment</h5>
+				<span tabIndex={0}>Arrives on {urgentDate.toLocaleDateString("en-US", formatOptions)}</span><br/>
+				<span tabIndex={0}>Additional cost of 5$</span>
 			</div>
 
 			<div className="col project-section">
@@ -36,9 +36,9 @@ export default function ShipmentSelection({ userLogged, cart, shipment, setShipm
 					onChange={(e) => setShipment({...shipment, value: e.target.value, date: regularDate.toLocaleDateString("en-US", formatOptions), price: 0})} 
 					value={1} checked={shipment.value == 1}
 				/>
-				<h5 className="section-input">Regular Shipment</h5>
-				<span>Arrives on {regularDate.toLocaleDateString("en-US", formatOptions)}</span><br/>
-				<span>Totally FREE</span>
+				<h5 className="section-input" tabIndex={0}>Regular Shipment</h5>
+				<span tabIndex={0}>Arrives on {regularDate.toLocaleDateString("en-US", formatOptions)}</span><br/>
+				<span tabIndex={0}>Totally FREE</span>
 			</div>
 			<button onClick={() => retroceder()} className="purchaseButton">Back</button>
 			<button onClick={() => avanzar()} disabled={shipment.value < 0}

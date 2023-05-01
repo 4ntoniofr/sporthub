@@ -58,32 +58,32 @@ export default function AddressSelection({ userLogged, cart, selectedAddress, se
 
 	return (
 		<div className="container">
-			<h5>Address Selection</h5>
+			<h5 tabIndex={0}>Address Selection</h5>
 
 			<div className="col project-section">
 				<input type="radio" name="address" disabled={isAddressEmpty(userLogged)} onChange={(e) => changedSelection(e)} value={0} checked={selectedAddress.value == 0} />
-				<h3 className="section-input"> Saved Address</h3>
+				<h3 className="section-input" tabIndex={0}> Saved Address</h3>
 
 				<div className="input-field">
-					<strong>Address Line-1</strong> {userLogged?.address1}
+					<strong tabIndex={0}>Address Line-1</strong> {userLogged?.address1}
 				</div>
 
 				<div className="input-field">
-					<strong>Address Line-2</strong> {userLogged?.address2}
+					<strong tabIndex={0}>Address Line-2</strong> {userLogged?.address2}
 				</div>
 
 				<div className="input-field col-sm-5">
-					<strong>Country</strong> {userLogged?.country}
+					<strong tabIndex={0}>Country</strong> {userLogged?.country}
 				</div>
 
 				<div className="input-field col-sm-3">
-					<strong>Postal-Code</strong> {userLogged?.postalcode}
+					<strong tabIndex={0}>Postal-Code</strong> {userLogged?.postalcode}
 				</div>
 			</div>
 
 			<div className="col project-section">
 				<input type="radio" name="address" onChange={(e) => changedSelection(e)} value={1} checked={selectedAddress.value == 1} />
-				<h3 className="section-input"> Alternative Address</h3>
+				<h3 className="section-input" tabIndex={0}> Alternative Address</h3>
 				<div className="input-field">
 
 					<label htmlFor="address-1">Address Line-1</label>

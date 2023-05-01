@@ -13,10 +13,11 @@ export default function ProductList({ cart, shipment }) {
 
 	return (
 		<div className="col-4 project-section">
-			<h5 className="section-input">Purchase Summary</h5>
+			<h5 className="section-input" tabIndex={0}>Purchase Summary</h5>
 			{cart.map((product) => {
 				return (
-					<div className="row align-items-center mb-2">
+					<div className="row align-items-center mb-2" tabIndex={0} 
+					aria-label={`${product.quantity} products of ${product.prod.name} ${product.quantity * product.prod.price} euros`}>
 						<div className="col">
 							<img src={product.prod.photo} style={{ width: "60%" }}></img>
 						</div>
@@ -29,7 +30,7 @@ export default function ProductList({ cart, shipment }) {
 					</div>
 				);
 			})}
-			<div className="row align-items-center mb-2">
+			<div className="row align-items-center mb-2" tabIndex={0} aria-label={`Shipment ${shipment.price} euros`}> 
 				<div className="col-8">
 					Shipment
 				</div>
@@ -37,7 +38,8 @@ export default function ProductList({ cart, shipment }) {
 					{shipment.price}$
 				</div>
 			</div>
-			<div className="row align-items-center">
+			<div className="row align-items-center" tabIndex={0} 
+			aria-label={`Total ${cartInfo(cart, shipment)[0]} products ${cartInfo(cart, shipment)[1]} euros`}>
 				<div className="col">
 					TOTAL
 				</div>

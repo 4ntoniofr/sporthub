@@ -49,8 +49,17 @@ export default function Search({ productList }) {
         <div className="row">
           {list.slice(i, i + ROW_SIZE).map((p) => {
             return (
-              <div tabIndex={0}
+              <div
+                tabIndex={0}
                 onClick={() => openProduct(p)}
+                onKeyDown={(event) => {
+                  if (
+                    event.key === "Enter" &&
+                    document.activeElement === event.target
+                  ) {
+                    openProduct(p);
+                  }
+                }}
                 className="col-12 col-sm-6 col-md-4 col-lg-3 my-2"
                 key={p.id}
                 aria-label={`${p.name} ${p.price} euros`}

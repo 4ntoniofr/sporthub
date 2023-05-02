@@ -20,9 +20,9 @@ export default function SearchBar({ lastQuery, lastCategory }) {
 	return (
 		<div className="p-3 mb-3 rounded bg-white">
 			<h5 className="mb-3">Search what you want</h5>
-			<div className="input-group mb-3">
+			<div className="input-group mb-3 searchbar">
 				<input aria-label="Search what you want" type="text" className="form-control w-50 searchBar" id="searchBar" defaultValue={lastQuery} onKeyUp={(e) => onEnter(e)} />
-				<select className="form-select searchBar" id="categories" defaultValue={lastCategory}>
+				<select className="form-select selectCategory" id="categories" defaultValue={lastCategory}>
 					<option value="all">All Categories</option>
 					<option value="football">Football</option>
 					<option value="basketball">Basketball</option>

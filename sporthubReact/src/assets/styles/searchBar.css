@@ -10,6 +10,12 @@
 
 .searchBar{
 	border-color: black;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.selectCategory{
+	border-color: black;
 }
 
 .searchBar:focus { 

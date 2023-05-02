@@ -6,26 +6,20 @@
   font-size: 1em;
 }
 
-:focus{
+:focus {
   border-color: blue;
   border-radius: 5px;
 }
 
-#navbarText.show{
-  padding: 2rem 3rem;
-  text-align: center;
+#navbarText.show {
   color: #fff;
-  border-radius: 20px;
-  border: 3px solid #fff;
-  box-shadow: 0px 0px 5px #222;
-  backdrop-filter: blur(10px);
+  background-color: #fff7ee;
 }
 
 .menuUser a:hover {
   background: #ffa500;
   transition: all 0.2s ease-in-out;
 }
-
 
 .button2 {
   width: 80px;
@@ -40,9 +34,8 @@
 }
 
 .button2:hover {
-	background-color: black;
-	transition: 0.2s;
-  color: #ffa500;
+  background-color: #ffa600ad;
+  transition: 0.2s;
 }
 
 #menuBtn {
@@ -74,26 +67,30 @@
   line-height: 30px;
 }
 
-.button-link:hover {
-	background-color: #ffa600ad;
-	transition: 0.2s;
+@media (max-width: 990px) {
+  .button-link {
+    width: 100px;
+  }
 }
 
-.item-cart{
+.button-link:hover {
+  background-color: #ffa600ad;
+  transition: 0.2s;
+}
+
+.item-cart {
   margin-right: 50px;
   padding-right: 30px;
 }
 
-
-
-#icono2, #icono {
+#icono2,
+#icono {
   margin-left: 7px;
   position: relative;
   top: 7px;
   font-size: 1.5em;
   margin-right: 5px;
 }
-
 
 #profile-dropdown {
   position: relative;
@@ -106,15 +103,19 @@
   height: -10px;
 }
 
-.top-nav{
+.top-nav {
   background-color: #fff7ee;
   height: 100px;
 }
 
-.item-user-profile{
+.item-user-profile {
   margin-right: 80px;
 }
 
-.item-brand{
+.item-brand {
   margin-left: 50px;
+}
+
+.nowrap{
+  flex-wrap: nowrap;
 }

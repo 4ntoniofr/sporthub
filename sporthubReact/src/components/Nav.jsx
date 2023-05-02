@@ -94,7 +94,7 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg p-0 fixed-top top-nav">
+      <nav className="navbar navbar-expand-lg p-0 fixed-top top-nav nowrap">
         <div className="container-fluid">
           <div className="navbar-brand item-brand">
             <a href="/">

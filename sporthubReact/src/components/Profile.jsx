@@ -19,7 +19,6 @@ export default function Profile({ userLogged, setUserLogged }) {
                     <img src="https://telematicanet.ucol.mx/egresados/assets/images/la-imagen-del-usuario-con-el-fondo-negro-626x626.jpg" alt="error"/>
                 </div>
                 <div className="content profileCardContent">
-                    <h2>username</h2>
                     <p><strong>@{username}</strong></p>
                     <button onClick={() => navigate("/profile/" + username + "/change-personal-info")} className="button"> Change Personal Info </button> 
                 </div>                 

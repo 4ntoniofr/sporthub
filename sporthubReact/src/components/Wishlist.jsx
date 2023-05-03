@@ -42,6 +42,11 @@ export default function Wishlist({ userLogged, wishlist, setWishlist }) {
 		}
 	}, []);
 
+	const openProduct = (product) => {
+		let path = "/product/" + product.id;
+		navigate(path, {product: product});
+	}
+
 	return (
 		<div>
 			<h1>WishList</h1>
@@ -63,7 +68,7 @@ export default function Wishlist({ userLogged, wishlist, setWishlist }) {
 											/>
 										</div>
 										<div className="col-3">
-											<h5 tabIndex={0} class="card-title">{product.name}</h5>
+											<h5 onClick={() => openProduct(product)} tabIndex={0} class="card-title prod-link">{product.name}</h5>
 										</div>
 										<div className="col-3">
 											<h5 tabIndex={0} aria-label={`Price ${product.price} euros`}>Price: {product.price}€</h5>

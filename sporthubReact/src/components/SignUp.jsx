@@ -18,7 +18,7 @@ export default function SignUp({ userLogged, setUserLogged }) {
 
   const signUpEvent = (e) => {
     e.preventDefault();
-    if(usernameInput === "" || nameInput === "" || lastNameInput === "" || dateInput === "" || emailInput === "" || passwordInput === ""){
+    if(usernameInput === "" || nameInput === "" || lastNameInput === "" || emailInput === "" || passwordInput === ""){
       MySwal.fire({
         title: "Error",
         text: "All fields must be filled",
@@ -28,23 +28,6 @@ export default function SignUp({ userLogged, setUserLogged }) {
       return;
     }
 
-    const [dia, mes, anio] = dateInput.split("/");
-    if (
-      dia < 1 ||
-      dia > 31 ||
-      mes < 1 ||
-      mes > 12 ||
-      anio < 1900 ||
-      anio > 2023
-    ) {
-      MySwal.fire({
-        title: "Error",
-        text: "The date must follow the format dd/mm/yyyy and be valid.",
-        icon: "error",
-        confirmButtonColor: "#ffa500",
-      });
-    } else {
-      let dateSend = anio + "-" + mes + "-" + dia;
       axios
         .post("http://localhost:8080/newUser/", {
           username: usernameInput,
@@ -52,7 +35,6 @@ export default function SignUp({ userLogged, setUserLogged }) {
           name: nameInput,
           email: emailInput,
           lastName: lastNameInput,
-          date: dateSend,
         })
         .then((response) => {
           const user = { username: usernameInput };
@@ -83,7 +65,6 @@ export default function SignUp({ userLogged, setUserLogged }) {
             });
           }
         });
-    }
   };
 
   const handleDateInputChange = (event) => {
@@ -173,26 +154,6 @@ export default function SignUp({ userLogged, setUserLogged }) {
                 onChange={(event) => setLastNameInput(event.target.value)}
               />
               <label>Last Name</label>
-            </div>
-
-            <div
-              className="inputbox formInputbox"
-              aria-label="Birth Date, format dd/mm/yyyy"
-            >
-              <ion-icon name="calendar-outline"></ion-icon>
-              <input
-                aria-label="Birth date dd/mm/yyyy"
-                type="text"
-                maxLength={10}
-                id="fecha"
-                className={
-                  dateInput !== "" ? "activo form-control" : "form-control"
-                }
-                value={dateInput}
-                onChange={handleDateInputChange}
-                onClick={handleDateInputClick}
-              />
-              <label>Birth Date dd/mm/yyyy </label>
             </div>
 
             <div className="inputbox formInputbox" aria-label="Email">

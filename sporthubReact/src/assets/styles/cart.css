@@ -40,3 +40,14 @@
 .cartContainer {
 	text-align: center;
 }
+
+h5.prod-link {
+	color: #0077cc; /* set text color */
+	text-decoration: underline; /* add underline */
+	cursor: pointer; /* change cursor to hand pointer */
+  }
+  
+h5.prod-link:hover {
+	color: #005299; /* change text color on hover */
+	text-decoration: none; /* remove underline on hover */
+  }

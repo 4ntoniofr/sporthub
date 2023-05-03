@@ -53,7 +53,7 @@ app.get("/userInfo/:username", (req, res) => {
 
 app.post("/newUser", (req, res) => {
   const { username, password, name, email, lastName, date } = req.body;
-  const sql = `INSERT INTO users (username, password, name, email, lastname, date, profileImage) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const sql = `INSERT INTO users (username, password, name, email, lastname, profileImage) VALUES (?, ?, ?, ?, ?, ?)`;
   bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) {
       console.error(err.message);
@@ -73,7 +73,7 @@ app.post("/newUser", (req, res) => {
           } else {
             db.run(
               sql,
-              [username, hash, name, email, lastName, date, null],
+              [username, hash, name, email, lastName, null],
               (err) => {
                 if (err) {
                   if (err.message.includes("UNIQUE constraint failed")) {

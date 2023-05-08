@@ -80,3 +80,7 @@
 .categoriesCardContent button:hover{
 	background-color: #ffc251;
 }
+
+.categoriesCardContent button:focus{
+	background-color: #ffc251;
+}

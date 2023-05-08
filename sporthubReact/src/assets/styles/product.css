@@ -1,98 +1,88 @@
 .product-div {
-    width: 50%;
-    margin: 0 auto;
-    text-align: center;
-  }
+  margin: 0 auto;
+  text-align: center;
+}
 
-#buttons button{
+.imageDiv{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#buttons button {
   margin: 0.2cm;
   background-color: #ffa500;
   border: none;
   color: black;
 }
 
-button#wishlist:hover{
+button#wishlist:hover {
   background-color: black;
   border: none;
   color: #ffa500;
 }
 
-button#cart:hover{
+button#cart:hover {
   background-color: black;
   border: none;
   color: #ffa500;
 }
 
+.boton-producto {
+  background-color: #ffa500;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  border-radius: 25px;
+  text-align: center;
+  height: 50px;
+  width: calc(20%);
+  height: 50px;
+  line-height: 30px;
+}
 
-.boton-producto{
-    background-color: #ffa500;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    border-radius: 25px;
-    text-align: center;
-    height: 50px;
-    width: calc(20%);
-    height: 50px;
-    line-height: 30px;
-  }
+.boton-producto:hover {
+  background-color: #ffa600ad;
+  transition: 0.2s;
+}
 
-  .boton-producto:hover{
-    background-color: #ffa600ad;
-    transition: 0.2s;
-  }
+.product-div {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
 
-  .product-div {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex; /* make the product-div a flex container */
-    padding: 30px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .product-div img {
-    margin-right: 30px; /* add space between the image and the text */
-    max-width: 100%;
-  }
-  
-  .product-div div:last-child {
-    display: flex; /* make the second div a flex container */
-    flex-direction: column; /* set the flex direction to column */
-    justify-content: space-between; /* distribute the content evenly vertically */
-  }
-  
-  .product-div h2 {
-    color: #1e1e1e;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-  }
-  
-  .product-div p {
-    color: #4d4d4d;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  .product-div button {
-    background-color: #ff8c00;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-top: 30px;
-    padding: 15px 30px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-  }
-  
-  .product-div button:hover {
-    background-color: #ff8400;
-  }
-  
-  
+.product-div h2 {
+  color: #1e1e1e;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.product-div p {
+  color: #4d4d4d;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.product-div button {
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 30px;
+  padding: 15px 30px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.product-div button:hover {
+  background-color: #ff8400;
+}

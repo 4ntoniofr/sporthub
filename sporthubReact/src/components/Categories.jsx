@@ -13,7 +13,7 @@ export default function Categories() {
 					</div>
 					<div className="content categoriesCardContent">
 						<h5>All categories</h5>
-						<button onClick={() => navigate("/search?c=all")}>Search All</button>
+						<button tabindex={0} onClick={() => navigate("/search?c=all")}>Search All</button>
 					</div>
 				</div>
 			</div>

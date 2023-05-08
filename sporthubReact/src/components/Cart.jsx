@@ -9,18 +9,18 @@ const MySwal = withReactContent(Swal);
 export default function Cart({ userLogged, cart, setCart }) {
   const navigate = useNavigate();
 
-	useEffect(() => {
-		if(userLogged == null){
-			navigate("/");
-		}
-	}, []);
+  useEffect(() => {
+    if (userLogged == null) {
+      navigate("/");
+    }
+  }, []);
 
   const removeOneFromCart = (productId) => {
     if (userLogged) {
       const newCart = [...cart];
       newCart.map((item) => {
         if (item.prod.id === productId) {
-          if(item.quantity==1){
+          if (item.quantity == 1) {
             MySwal.fire({
               title: "Confirmation needed",
               text: "Do you really want to remove the product from the cart?",
@@ -30,7 +30,7 @@ export default function Cart({ userLogged, cart, setCart }) {
               confirmButtonColor: "#ffa500",
               denyButtonText: "Deny",
             }).then((result) => handleClick(result, productId));
-          }else{
+          } else {
             item.quantity--;
           }
         }
@@ -55,6 +55,11 @@ export default function Cart({ userLogged, cart, setCart }) {
       });
       setCart(newCart);
     }
+  };
+
+  const openProduct = (product) => {
+    let path = "/product/" + product.id;
+    navigate(path, { product: product });
   };
 
   const cartInfo = (cart) => {
@@ -92,44 +97,68 @@ export default function Cart({ userLogged, cart, setCart }) {
             return (
               <div className="card mb-2">
                 <div className="card-body text-center">
-                  <div className="row align-items-center">
-                    <div className="col-2">
+                  <div className=" align-items-center itemRow">
+                    <div className="imgDiv">
                       <img
-                        style={{ maxWidth: "70%", height: "auto" }}
+                        tabIndex={0}
                         src={product.prod.photo}
-                        alt="photo"
+                        alt={"photo of " + product.prod.name}
                       />
                     </div>
-                    <div className="col-3">
-                      <h5 className="card-title" tabIndex={0} aria-label={product.prod.name}>{product.prod.name}</h5>
+                    <div>
+                      <h5
+                        onClick={() => openProduct(product.prod)}
+                        tabIndex={0}
+                        class="card-title prod-link"
+                        aria-label={product.prod.name}
+                      >
+                        {product.prod.name}
+                      </h5>
                     </div>
-                    <div className="col-1">
-                      <button aria-label="remove product"
+                    <div className="quantityDiv">
+                      <button
+                        aria-label="remove product"
                         onClick={() => removeOneFromCart(product.prod.id)}
                         className="removeButton px-1"
                       >
                         <ion-icon name="remove-circle-outline"></ion-icon>
                       </button>
-                    </div>
-                    <div className="col-2">
-                      <span className="px-1" tabIndex={0} aria-label={`Cantidad ${product.quantity}`}>Quantity: {product.quantity}</span>
-                    </div>
-                    <div className="col-1">
-                      <button aria-label="Add another product"
+
+                      <span
+                        className="px-1"
+                        tabIndex={0}
+                        aria-label={`Cantidad ${product.quantity}`}
+                      >
+                        Quantity: {product.quantity}
+                      </span>
+
+                      <button
+                        aria-label="Add another product"
                         onClick={() => addOneToCart(product.prod.id)}
                         className="addButton px-1"
                       >
                         <ion-icon name="add-circle-outline"></ion-icon>
                       </button>
                     </div>
-                    <div className="col-2">
-                      <p tabIndex={0} aria-label={`Price ${product.prod.price} euros`}>Price: {product.prod.price}€</p>
-                      <h5 tabIndex={0} aria-label={`Subtotal ${product.prod.price * product.quantity} euros`}>
+                    <div className="priceDiv">
+                      <p
+                        tabIndex={0}
+                        aria-label={`Price ${product.prod.price} euros`}
+                      >
+                        Price: {product.prod.price}€
+                      </p>
+                      <h5
+                        tabIndex={0}
+                        aria-label={`Subtotal ${
+                          product.prod.price * product.quantity
+                        } euros`}
+                      >
                         Subtotal: {product.prod.price * product.quantity}€
                       </h5>
                     </div>
-                    <div className="col-1">
-                      <button aria-label="Remove all"
+                    <div>
+                      <button
+                        aria-label="Remove all"
                         onClick={() => {
                           MySwal.fire({
                             title: "Confirmation needed",
@@ -156,14 +185,22 @@ export default function Cart({ userLogged, cart, setCart }) {
 
           <div className="card totalCard">
             <div className="card-body text-center">
-              <div className="row align-items-center">
-                <div className="col-3"></div>
-                <div className="col-3"></div>
+              <div className="row align-items-center priceRow">
                 <div className="col-3">
-                  <h5 tabIndex={0} aria-label={`Total products ${cartInfo(cart)[0]}`}>Total products: {cartInfo(cart)[0]}</h5>
+                  <h5
+                    tabIndex={0}
+                    aria-label={`Total products ${cartInfo(cart)[0]}`}
+                  >
+                    Total products: {cartInfo(cart)[0]}
+                  </h5>
                 </div>
                 <div className="col-3">
-                  <h4 tabIndex={0} aria-label={`Total ${cartInfo(cart)[1]} euros`}>Total: {cartInfo(cart)[1]}€</h4>
+                  <h4
+                    tabIndex={0}
+                    aria-label={`Total ${cartInfo(cart)[1]} euros`}
+                  >
+                    Total: {cartInfo(cart)[1]}€
+                  </h4>
                 </div>
               </div>
             </div>

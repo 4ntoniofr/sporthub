@@ -1,53 +1,108 @@
-.addButton, .removeButton, .removeAllButton {
-	background: #ffa500;
-	outline: none;
-	border: none;
-	color: #000;
-	font-weight: 600;
-	font-size: 1.62em;
-	line-height: 5px;
-	border-radius: 30px;
-	height: 40px;
-	width: 40px;
+.addButton,
+.removeButton,
+.removeAllButton {
+  background: #ffa500;
+  outline: none;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.62em;
+  line-height: 5px;
+  border-radius: 30px;
+  height: 40px;
+  width: 40px;
+}
+
+.addButton:focus,
+.removeButton:focus,
+.removeAllButton:focus {
+  border: 3px solid black;
 }
 
 .removeAllButton {
-	background: red;
+  background: red;
 }
 
-.addButton:hover, .removeButton:hover {
-	background: #ffc251;
+.addButton:hover,
+.removeButton:hover {
+  background: #ffc251;
 }
 
 .totalCard {
-	background: #ffa500;
+  background: #ffa500;
 }
 
 .finishButton {
-	width: 25%;
-	padding: 10px;
-	border-radius: 20px;
-	border: none;
-	background: #ffa500;
-	color: #000;
-	font-weight: 600;
+  width: 25%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: #ffa500;
+  color: #000;
+  font-weight: 600;
+}
+
+.itemRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .finishButton:hover {
-	background: #ffc251;
+  background: #ffc251;
 }
 
 .cartContainer {
-	text-align: center;
+  text-align: center;
 }
 
 h5.prod-link {
-	color: #0077cc; /* set text color */
-	text-decoration: underline; /* add underline */
-	cursor: pointer; /* change cursor to hand pointer */
-  }
-  
+  color: #0077cc; /* set text color */
+  text-decoration: underline; /* add underline */
+  cursor: pointer; /* change cursor to hand pointer */
+}
+
 h5.prod-link:hover {
-	color: #005299; /* change text color on hover */
-	text-decoration: none; /* remove underline on hover */
+  color: #005299; /* change text color on hover */
+  text-decoration: none; /* remove underline on hover */
+}
+
+.quantityDiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 7%;
+  align-items: center;
+  font-size: 18px;
+}
+
+.imgDiv {
+  margin-right: 4%;
+}
+
+.imgDiv img{
+	width: 100px;
+	height: auto;
+}
+
+.priceDiv {
+  margin-right: 9%;
+}
+
+.alonePriceDiv{
+	margin: 0 10%;
+}
+
+@media (min-width: 650px) {
+  .priceRow {
+    position: relative;
+    left: 50%;
   }
+}
+
+@media (max-width: 650px) {
+  .priceRow {
+    display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  }
+}

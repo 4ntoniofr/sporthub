@@ -1,4 +1,4 @@
-import "../assets/styles/cart.css"
+import "../assets/styles/cart.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
@@ -8,22 +8,24 @@ import axios from "axios";
 const MySwal = withReactContent(Swal);
 
 export default function Wishlist({ userLogged, wishlist, setWishlist }) {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const removeFromWishlist = (productId) => {
-		if (userLogged) {
-			axios.post("http://localhost:8080/removeFromWishlist", {
-				username: userLogged.username,
-				productId: productId,
-			}).then((res) => {
-				if(res.status == 200){
-					setWishlist(wishlist.filter(item => item.id !== productId));
-				}
-			});
-		}
-	};
+  const removeFromWishlist = (productId) => {
+    if (userLogged) {
+      axios
+        .post("http://localhost:8080/removeFromWishlist", {
+          username: userLogged.username,
+          productId: productId,
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            setWishlist(wishlist.filter((item) => item.id !== productId));
+          }
+        });
+    }
+  };
 
-	const handleClick = (result, id) => {
+  const handleClick = (result, id) => {
     if (result.isConfirmed) {
       MySwal.fire({
         title: "Success",
@@ -36,46 +38,57 @@ export default function Wishlist({ userLogged, wishlist, setWishlist }) {
     }
   };
 
-	useEffect(() => {
-		if(userLogged == null){
-			navigate("/");
-		}
-	}, []);
+  useEffect(() => {
+    if (userLogged == null) {
+      navigate("/");
+    }
+  }, []);
 
-	const openProduct = (product) => {
-		let path = "/product/" + product.id;
-		navigate(path, {product: product});
-	}
+  const openProduct = (product) => {
+    let path = "/product/" + product.id;
+    navigate(path, { product: product });
+  };
 
-	return (
-		<div>
-			<h1>WishList</h1>
-			<br />
-			{wishlist.length === 0 ? (
-				<p>Your wishlist is empty.</p>
-			) : (
-				<div className="container">
-					{wishlist.map((product) => {
-						return (
-							<div class="card mb-2">
-								<div class="card-body text-center">
-									<div className="row align-items-center">
-										<div className="col-3">
-											<img
-												style={{ maxWidth: "30%", height: "auto" }}
-												src={product.photo}
-												alt="photo"
-											/>
-										</div>
-										<div className="col-3">
-											<h5 onClick={() => openProduct(product)} tabIndex={0} class="card-title prod-link">{product.name}</h5>
-										</div>
-										<div className="col-3">
-											<h5 tabIndex={0} aria-label={`Price ${product.price} euros`}>Price: {product.price}€</h5>
-										</div>
-										<div className="col-3">
-											<button aria-label="delete product"
-												onClick={() => {
+  return (
+    <div>
+      <h1>WishList</h1>
+      <br />
+      {wishlist.length === 0 ? (
+        <p>Your wishlist is empty.</p>
+      ) : (
+        <div className="container">
+          {wishlist.map((product) => {
+            return (
+              <div class="card mb-2">
+                <div class="card-body text-center">
+                  <div className=" align-items-center itemRow">
+                    <div className="imgDiv">
+                      <img
+                        src={product.photo}
+                        alt="photo"
+                      />
+                    </div>
+                    <div>
+                      <h5
+                        onClick={() => openProduct(product)}
+                        tabIndex={0}
+                        class="card-title prod-link"
+                      >
+                        {product.name}
+                      </h5>
+                    </div>
+                    <div className="alonePriceDiv">
+                      <h5
+                        tabIndex={0}
+                        aria-label={`Price ${product.price} euros`}
+                      >
+                        Price: {product.price}€
+                      </h5>
+                    </div>
+                    <div>
+                      <button
+                        aria-label="delete product"
+                        onClick={() => {
                           MySwal.fire({
                             title: "Confirmation needed",
                             text: "Do you really want to remove the product from the wishlist?",
@@ -88,18 +101,18 @@ export default function Wishlist({ userLogged, wishlist, setWishlist }) {
                             handleClick(result, product.id);
                           });
                         }}
-												className="removeAllButton mx-1"
-											>
-												<ion-icon name="trash-bin-outline"></ion-icon>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			)}
-		</div>
-	);
+                        className="removeAllButton mx-1"
+                      >
+                        <ion-icon name="trash-bin-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
 }

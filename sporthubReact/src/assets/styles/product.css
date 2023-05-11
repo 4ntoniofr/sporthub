@@ -3,13 +3,12 @@
   text-align: center;
 }
 
-.imageDiv{
+.imageDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-
 
 #buttons button {
   margin: 0.2cm;
@@ -19,15 +18,18 @@
 }
 
 button#wishlist:hover {
-  background-color: black;
-  border: none;
-  color: #ffa500;
+  background-color: #ffc2518e;
 }
 
 button#cart:hover {
-  background-color: black;
-  border: none;
-  color: #ffa500;
+  background-color: #ffc2518e;
+}
+button#wishlist:focus {
+  background-color: #ffc2518e;
+}
+
+button#cart:focus {
+  background-color: #ffc2518e;
 }
 
 .boton-producto {

@@ -8,7 +8,6 @@
 
 :focus {
   border-color: blue;
-  border-radius: 5px;
 }
 
 #navbarText.show {
@@ -67,18 +66,6 @@
 
 .button-link {
   background-color: #ffa500;
-  border: none;
-  color: #000;
-  cursor: pointer;
-  border-radius: 25px;
-  text-align: center;
-  height: 50px;
-  width: calc(100% + 10px);
-  height: 50px;
-  line-height: 30px;
-}
-
-.button-link:focus {
   border: none;
   color: #000;
   cursor: pointer;

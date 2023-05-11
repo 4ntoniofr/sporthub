@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import "../assets/styles/changePersonalInfo.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -29,6 +29,7 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
   const [errorNombre, setErrorNombre] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
+  const navigate = useNavigate();
 
   function handleDataChange(e) {
     setUserData({ ...userData, name: e.target.value });
@@ -79,7 +80,12 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
             text: "The user info has been updated",
             icon: "success",
             confirmButtonColor: "#ffa500",
+          }).then(() => {
+            let path = "/profile/" + userLogged.username;
+            navigate(path);
+            window.scrollTo(0, 0);
           });
+
         })
         .catch((error) => {
           MySwal.fire({
@@ -88,6 +94,8 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
             icon: "error",
             confirmButtonColor: "#ffa500",
           });
+        }).then(() => {
+          //window.scrollTo(0, 0);
         });
     } else {
       MySwal.fire({
@@ -95,6 +103,10 @@ export default function ChangePersonalInfo({ userLogged, setUserLogged }) {
         text: "All mandatory fields have to be filled",
         icon: "warning",
         confirmButtonColor: "#ffa500",
+      }).then(() => {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 270);
       });
     }
   };

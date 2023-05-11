@@ -78,9 +78,10 @@
 }
 
 .categoriesCardContent button:hover{
-	background-color: #ffc251;
+	background-color: #ffc2518e;
 }
 
 .categoriesCardContent button:focus{
-	background-color: #ffc251;
+	background-color: #ffc2518e;
+	border: 3px solid black;
 }

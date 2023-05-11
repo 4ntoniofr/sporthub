@@ -315,13 +315,8 @@ app.post("/getWishlist", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
-});
-
-
 /**
- * API WISHLIST
+ * API CART
  */
 
 app.post("/addToCart", (req, res) => {

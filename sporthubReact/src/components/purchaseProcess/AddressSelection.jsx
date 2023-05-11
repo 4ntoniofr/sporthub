@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function AddressSelection({
   userLogged,
@@ -43,7 +47,12 @@ export default function AddressSelection({
   const submitEvent = () => {
     if (selectedAddress.value == 0) {
       if (isAddressEmpty(userLogged)) {
-        alert("Selected address not completed");
+        MySwal.fire({
+          title: "Error",
+          text: "Selected address not completed",
+          icon: "error",
+          confirmButtonColor: "#ffa500",
+        });
       } else {
         setSelectedAddress({
           ...selectedAddress,
@@ -58,7 +67,12 @@ export default function AddressSelection({
       }
     } else if (selectedAddress.value == 1) {
       if (isAddressEmpty(alternativeAddress)) {
-        alert("Selected address not completed");
+        MySwal.fire({
+          title: "Error",
+          text: "Selected address not completed",
+          icon: "error",
+          confirmButtonColor: "#ffa500",
+        });
       } else {
         setSelectedAddress({
           ...selectedAddress,
@@ -67,7 +81,12 @@ export default function AddressSelection({
         avanzar();
       }
     } else {
-      alert("Address not selected");
+      MySwal.fire({
+        title: "Error",
+        text: "Address not selected",
+        icon: "error",
+        confirmButtonColor: "#ffa500",
+      });
     }
   };
 

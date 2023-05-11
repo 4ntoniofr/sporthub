@@ -36,7 +36,7 @@ export default function Nav({ userLogged, setUserLogged, cart }) {
     return (
       <>
         <li className="nav-item item-cart">
-          <Link className="nav-link button-link" to={"/cart"}>
+          <Link className="nav-link button-link" to={"/cart"} id="cartButton">
             {cartItems()}
             <ion-icon name="cart" id="icono"></ion-icon>
           </Link>

@@ -69,11 +69,13 @@ export default function PaymentSelection({
 
       <div className="row">
         <div className="col project-section">
-          <h5 tabIndex={0} className="section-input">Credit Card</h5>
+          <h5 tabIndex={0} className="section-input">
+            Credit Card
+          </h5>
 
           <div className="input-field">
             <label htmlFor="name">Credit Card Name</label>
-            <input 
+            <input
               aria-label="Credit Card Name"
               type="text"
               className="form-control input-formulario"
@@ -87,7 +89,7 @@ export default function PaymentSelection({
           <div className="input-field">
             <label htmlFor="number">Credit Card Number</label>
             <input
-            aria-label="Credit Card Number"
+              aria-label="Credit Card Number"
               type="text"
               className="form-control input-formulario"
               name="number"
@@ -100,6 +102,7 @@ export default function PaymentSelection({
           <div className="input-field col-sm-2">
             <label htmlFor="expirationDate">Expiration Date</label>
             <input
+              id="monthExpiration"
               aria-label="Expiration Date"
               type="month"
               className="form-control input-formulario"
@@ -112,7 +115,11 @@ export default function PaymentSelection({
         </div>
         <ProductList cart={cart} shipment={shipment} />
       </div>
-      <button tabIndex={0}  onClick={() => retroceder()} className="purchaseButton">
+      <button
+        tabIndex={0}
+        onClick={() => retroceder()}
+        className="purchaseButton"
+      >
         Back
       </button>
       <button

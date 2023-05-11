@@ -315,6 +315,56 @@ app.post("/getWishlist", (req, res) => {
   });
 });
 
+/**
+ * API CART
+ */
+
+app.post("/addToCart", (req, res) => {
+  const { username, productId } = req.body;
+  const sql =
+    "INSERT INTO cart(user, product) VALUES ((SELECT id FROM users WHERE username = ?),?)";
+
+  db.run(sql, [username, productId], (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send("Internal server error");
+    } else {
+      res.status(200).send();
+    }
+  });
+});
+
+app.post("/removeFromCart", (req, res) => {
+  const { username, productId } = req.body;
+  const sql =
+    "DELETE FROM cart WHERE user = (SELECT id FROM users WHERE username = ?) and product = ?";
+
+  db.run(sql, [username, productId], (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send("Internal server error");
+    } else {
+      res.status(200).send();
+    }
+  });
+});
+
+app.post("/getCart", (req, res) => {
+  const { username } = req.body;
+  const sql =
+    "SELECT product FROM cart WHERE user = (SELECT id FROM users WHERE username = ?)";
+
+  db.all(sql, [username], (err, rows) => {
+    if (err) {
+      console.log(err.message);
+      res.status(500).send("Internal Server ERROR");
+    } else {
+      res.status(200).send(rows);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
+

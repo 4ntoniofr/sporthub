@@ -1,21 +1,37 @@
 .purchaseButton {
-	width: 150px;
-	padding: 10px;
-	border-radius: 20px;
-	outline: none;
-	border: none;
-	transform: translateX(20px);
-	background: #ffa500;
-	color: #000;
-	font-weight: 600;
-	cursor: pointer;
-	margin-right: 5px;
+  width: 150px;
+  padding: 10px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  transform: translateX(20px);
+  background: #ffa500;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.purchaseButton:hover {
+  background-color: #ffc2518e;
+}
+
+.purchaseButton:focus {
+  border: 3px solid black;
 }
 
 .disabledPurchaseButton {
-	background-color: grey;
+  background-color: grey;
+}
+
+.disabledPurchaseButton:hover {
+  background-color: grey;
 }
 
 .longButton {
-	width: 225px;
+  width: 225px;
+}
+
+#monthExpiration{
+	width: 200px;
 }

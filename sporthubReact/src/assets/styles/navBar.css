@@ -54,8 +54,31 @@
   width: calc(100% + 20px);
 }
 
+#menuBtn:hover {
+  background-color: #ffc2518e;
+}
+#menuBtn:focus {
+  background-color: #ffc2518e;
+}
+#cartButton:hover {
+  background-color: #ffc2518e;
+}
+
+
 .button-link {
   background-color: #ffa500;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  border-radius: 25px;
+  text-align: center;
+  height: 50px;
+  width: calc(100% + 10px);
+  height: 50px;
+  line-height: 30px;
+}
+
+.button-link:focus {
   border: none;
   color: #000;
   cursor: pointer;
@@ -115,4 +138,3 @@
 .item-brand {
   margin-left: 50px;
 }
-

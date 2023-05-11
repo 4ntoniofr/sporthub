@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function AddressSelection({
 	userLogged,
@@ -40,36 +44,51 @@ export default function AddressSelection({
 		setSelectedAddress({ ...selectedAddress, value: value });
 	};
 
-	const submitEvent = () => {
-		if (selectedAddress.value == 0) {
-			if (isAddressEmpty(userLogged)) {
-				alert("Selected address not completed");
-			} else {
-				setSelectedAddress({
-					...selectedAddress,
-					address: {
-						address1: userLogged.address1,
-						address2: userLogged.address2,
-						country: userLogged.country,
-						postalcode: userLogged.postalcode,
-					},
-				});
-				avanzar();
-			}
-		} else if (selectedAddress.value == 1) {
-			if (isAddressEmpty(alternativeAddress)) {
-				alert("Selected address not completed");
-			} else {
-				setSelectedAddress({
-					...selectedAddress,
-					address: alternativeAddress,
-				});
-				avanzar();
-			}
-		} else {
-			alert("Address not selected");
-		}
-	};
+  const submitEvent = () => {
+    if (selectedAddress.value == 0) {
+      if (isAddressEmpty(userLogged)) {
+        MySwal.fire({
+          title: "Error",
+          text: "Selected address not completed",
+          icon: "error",
+          confirmButtonColor: "#ffa500",
+        });
+      } else {
+        setSelectedAddress({
+          ...selectedAddress,
+          address: {
+            address1: userLogged.address1,
+            address2: userLogged.address2,
+            country: userLogged.country,
+            postalcode: userLogged.postalcode,
+          },
+        });
+        avanzar();
+      }
+    } else if (selectedAddress.value == 1) {
+      if (isAddressEmpty(alternativeAddress)) {
+        MySwal.fire({
+          title: "Error",
+          text: "Selected address not completed",
+          icon: "error",
+          confirmButtonColor: "#ffa500",
+        });
+      } else {
+        setSelectedAddress({
+          ...selectedAddress,
+          address: alternativeAddress,
+        });
+        avanzar();
+      }
+    } else {
+      MySwal.fire({
+        title: "Error",
+        text: "Address not selected",
+        icon: "error",
+        confirmButtonColor: "#ffa500",
+      });
+    }
+  };
 
 	return (
 		<div className="container">

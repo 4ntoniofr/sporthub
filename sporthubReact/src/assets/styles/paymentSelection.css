@@ -1,0 +1,16 @@
+#generalContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 800px) {
+  #paymentContainer {
+    width: 50%;
+  }
+
+  #summary {
+    width: 50%;
+  }
+
+}
+

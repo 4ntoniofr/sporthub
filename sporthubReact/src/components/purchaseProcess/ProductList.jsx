@@ -1,3 +1,5 @@
+import "../../assets/styles/paymentSelection.css";
+
 export default function ProductList({ cart, shipment }) {
 
 	const cartInfo = (cart, shipment) => {
@@ -12,7 +14,7 @@ export default function ProductList({ cart, shipment }) {
 	};
 
 	return (
-		<div className="col-4 project-section">
+		<div id="summary" className="project-section ">
 			<h5 className="section-input" tabIndex={0}>Purchase Summary</h5>
 			{cart.map((product) => {
 				return (

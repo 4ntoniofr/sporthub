@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ProductList from "./ProductList";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import "../../assets/styles/paymentSelection.css";
 
 const MySwal = withReactContent(Swal);
 
@@ -67,8 +68,8 @@ export default function PaymentSelection({
     <div className="container">
       <h3 tabIndex={0}>Payment Selection</h3>
 
-      <div className="row">
-        <div className="col project-section">
+      <div id="generalContainer" className="row">
+        <div id="paymentContainer" className="col project-section">
           <h5 tabIndex={0} className="section-input">
             Credit Card
           </h5>
